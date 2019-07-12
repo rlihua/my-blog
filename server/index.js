@@ -1,12 +1,12 @@
-const path = require('path');
+const routerApi = require('./router');
+const bodyParser = require('body-parser'); // post 数据是需要
 const express = require('express');
 const app = express();
 
-app.get('/api/getArticle', (req, res, next) => {
-  res.json({
-      data: '后台返回结果 getArticle'
-    })
-})
+app.use(bodyParser.json());
+
+// 后端api路由
+app.use('/api', routerApi);
 
 // 监听端口
 app.listen(3000);
